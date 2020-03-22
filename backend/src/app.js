@@ -2,6 +2,7 @@ import 'dotenv/config';
 
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 import Youch from 'youch';
 import * as Sentry from '@sentry/node';
 
@@ -28,6 +29,10 @@ class App {
 
   middlewares() {
     this.server.use(Sentry.Handlers.requestHandler());
+    /** Em ambiente de produção setar:
+     *  this.server.use(cors({ origin: 'https://www.gobarber.com.br' }));
+     */
+    this.server.use(cors());
     this.server.use(express.json());
     this.server.use(
       '/files',
