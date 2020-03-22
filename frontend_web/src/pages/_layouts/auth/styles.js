@@ -34,6 +34,13 @@ export const Content = styled.div`
     }
   }
 
+  span {
+    color: #f64c75;
+    align-self: flex-start;
+    margin: 0 0 10px;
+    font-weight: bold;
+  }
+
   button {
     font-size: 16px;
     font-weight: bold;
