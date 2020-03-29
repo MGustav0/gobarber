@@ -1,7 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Background from '~/components/Background';
 import { signOut } from '~/store/modules/auth/actions';
@@ -10,9 +8,9 @@ import { updateProfileRequest } from '~/store/modules/user/actions';
 import {
   Container,
   Title,
+  Separator,
   Form,
   FormInput,
-  Separator,
   SubmitButton,
   LogoutButton,
 } from './styles';
@@ -26,15 +24,11 @@ export default function Profile() {
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  console.tron.log(profile);
-
   const [name, setName] = useState(profile.name);
   const [email, setEmail] = useState(profile.email);
   const [oldPassword, setOldPassword] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
-  const loading = useSelector((state) => state.auth.loading);
 
   useEffect(() => {
     setOldPassword('');
@@ -83,7 +77,7 @@ export default function Profile() {
             placeholder="Digite seu e-mail"
             ref={emailRef}
             returnKeyType="next"
-            onSubmitEditing={() => oldPasswordRef.current.focus()}
+            onSubmitEditing={() => oldPassword.current.focus()}
             value={email}
             onChangeText={setEmail}
           />
@@ -93,9 +87,9 @@ export default function Profile() {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Senha atual"
+            placeholder="Sua senha atual"
             ref={oldPasswordRef}
-            eturnKeyType="next"
+            returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
             value={oldPassword}
             onChangeText={setOldPassword}
@@ -104,9 +98,9 @@ export default function Profile() {
           <FormInput
             icon="lock-outline"
             secureTextEntry
-            placeholder="Nova senha"
+            placeholder="Sua nova senha"
             ref={passwordRef}
-            eturnKeyType="next"
+            returnKeyType="next"
             onSubmitEditing={() => confirmPasswordRef.current.focus()}
             value={password}
             onChangeText={setPassword}
@@ -117,27 +111,16 @@ export default function Profile() {
             secureTextEntry
             placeholder="Confirmação de senha"
             ref={confirmPasswordRef}
-            eturnKeyType="send"
+            returnKeyType="send"
             onSubmitEditing={handleSubmit}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
           />
 
-          <SubmitButton loading={loading} onPress={handleSubmit}>
-            Atualizar pefil
-          </SubmitButton>
-          <LogoutButton loading={loading} onPress={handleLogout}>
-            Sair do GoBarber
-          </LogoutButton>
+          <SubmitButton onPress={handleSubmit}>Atualizar perfil</SubmitButton>
+          <LogoutButton onPress={handleLogout}>Sair do GoBarber</LogoutButton>
         </Form>
       </Container>
     </Background>
   );
 }
-
-Profile.navigationOptions = {
-  tabBarLabel: 'Meu perfil',
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="person" size={20} color={tintColor} />
-  ),
-};
