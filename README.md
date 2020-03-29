@@ -1,6 +1,7 @@
-<h3 align="center">
+<h1 align="center">
   GoBarber
-
+</h1>  
+  
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rocketseat/bootcamp-gostack-09?color=%2304D361">
 
@@ -36,7 +37,7 @@
 3. Rode `yarn` para instalar as dependências;
 4. Rode `yarn start` para instalar as dependências;
 
-## :tv: Front-end - Instalação e execução
+## :iphone: Front-end - Instalação e execução
 
 1. Faça um clone desse repositório;
 2. Entre na pasta rodando `cd gobarber/frontendMobile`;
