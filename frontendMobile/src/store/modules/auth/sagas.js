@@ -1,7 +1,6 @@
 import { Alert } from 'react-native';
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 
-// import history from '~/services/history';
 import api from '~/services/api';
 
 import { signInSuccess, signFailure } from './actions';
@@ -20,7 +19,7 @@ export function* signIn({ payload }) {
     if (user.provider) {
       Alert.alert(
         'Erro no login',
-        'Usuário não pode ser prestador de serviços'
+        'O usuário não pode ser prestador de serviços'
       );
       return;
     }
@@ -30,12 +29,11 @@ export function* signIn({ payload }) {
     yield put(signInSuccess(token, user));
 
     // history.push('/dashboard');
-  } catch (error) {
+  } catch (err) {
     Alert.alert(
       'Falha na autenticação',
       'Houve um erro no login, verifique seus dados'
     );
-
     yield put(signFailure());
   }
 }
@@ -51,7 +49,7 @@ export function* signUp({ payload }) {
     });
 
     // history.push('/');
-  } catch (error) {
+  } catch (err) {
     Alert.alert(
       'Falha no cadastro',
       'Houve um erro no cadastro, verifique seus dados'
