@@ -9,12 +9,10 @@ export function* updateProfile({ payload }) {
   try {
     const { name, email, avatar_id, ...rest } = payload.data;
 
-    const profile = {
-      name,
-      email,
-      avatar_id,
-      ...(rest.oldPassword ? rest : {}),
-    };
+    const profile = Object.assign(
+      { name, email, avatar_id },
+      ...(rest.oldPassword ? rest : {})
+    );
     const response = yield call(api.put, 'users', profile);
 
     toast.success('Perfil atualizado com sucesso!');
