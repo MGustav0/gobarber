@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '~/components/Background';
+import { signOut } from '~/store/modules/auth/actions';
 import { updateProfileRequest } from '~/store/modules/user/actions';
 
 import {
@@ -13,6 +14,7 @@ import {
   FormInput,
   Separator,
   SubmitButton,
+  LogoutButton,
 } from './styles';
 
 export default function Profile() {
@@ -32,7 +34,7 @@ export default function Profile() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // const loading = useSelector((state) => state.auth.loading);
+  const loading = useSelector((state) => state.auth.loading);
 
   useEffect(() => {
     setOldPassword('');
@@ -50,6 +52,10 @@ export default function Profile() {
         confirmPassword,
       })
     );
+  }
+
+  function handleLogout() {
+    dispatch(signOut());
   }
 
   return (
@@ -117,9 +123,12 @@ export default function Profile() {
             onChangeText={setConfirmPassword}
           />
 
-          <SubmitButton /* loading={loading} */ onPress={handleSubmit}>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
             Atualizar pefil
           </SubmitButton>
+          <LogoutButton loading={loading} onPress={handleLogout}>
+            Sair do GoBarber
+          </LogoutButton>
         </Form>
       </Container>
     </Background>
