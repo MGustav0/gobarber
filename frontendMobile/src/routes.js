@@ -105,7 +105,6 @@ export default function createRouter(isSigned = false) {
         name="Dashboard"
         component={Dashboard}
         options={{
-          unmountOnBlur: true,
           tabBarLabel: 'Agendamentos',
           tabBarIcon: ({ color }) => (
             <Icon name="event" size={20} color={color} />
@@ -116,6 +115,7 @@ export default function createRouter(isSigned = false) {
         name="New"
         component={NewStack}
         options={{
+          unmountOnBlur: true,
           tabBarVisible: false,
           tabBarLabel: 'Agendar',
           tabBarIcon: ({ color }) => (
