@@ -290,6 +290,7 @@ Para criar uma imagem do **PostgreSQL**, basta colocar o seguinte comando no ter
 * Acesso pelo terminal: ```docker exec -it nome_do_container bash```
 
 #### PGAdmin
+
 Para criar uma imagem do **PGAdmin4**, basta colocar o comando no terminal:
 
 * ```docker run -p 5555:80 --name pgadmin01 -e 'PGADMIN_DEFAULT_EMAIL=postgres' -e 'PGADMIN_DEFAULT_PASSWORD=docker' dpage/pgadmin4```
@@ -334,6 +335,7 @@ Para criar uma imagem do **MySQL**, basta colocar o seguinte comando no terminal
 * Acesso pelo terminal: ```docker exec -it nome_do_container bash```
 
 #### phpMyAdmin
+
 Para criar uma imagem do **phpMyAdmin4**, basta colocar o seguinte comando no terminal:
 
 * ```docker run --name phpmyadmin01 -d --link mysql01:db -p 8080:80 phpmyadmin/phpmyadmin```
